@@ -8,20 +8,16 @@ get '/secret' do
   "Bla bla black sheep"
 end
 
-get '/cat' do
-  erb(:show_image)
+get '/random-cat' do
+  @name = ["Amigo", "Oscar", "Viking", "Matthew", "Louis"].sample
+  erb(:index)
 end
 
-get '/hello/:name' do
-  # matches "GET /hello/foo" and "GET /hello/bar"
-  # params['name'] is 'foo' or 'bar'
-  "Hello #{params['Louis']}!"
+get '/named-cat' do
+  @name = params[:name]
+  erb :index
 end
 
-post '/' do
-  "Louis says hi"
-end
-
-put '/' do
-  "Hello Louis"
+get '/form' do
+  erb(:form)
 end
